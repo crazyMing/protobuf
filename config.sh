@@ -34,6 +34,12 @@ function bdist_wheel_cmd {
 }
 
 function build_wheel {
+    # Modify build version
+    pwd
+    ls
+    sed -i "/__version__/c\__version__ = '$BUILD_VERSION'" google/protobuf/__init__.py
+    cat google/protobuf/__init__.py
+    
     build_wheel_cmd "bdist_wheel_cmd" $@
 }
 
